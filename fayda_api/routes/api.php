@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\GoogleAuthController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RatingController;
@@ -16,9 +17,9 @@ Route::get('/user', function (Request $request) {
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout']);
+//GoogleAuth
+Route::post('/auth/google', [GoogleAuthController::class, 'handleGoogleCallback']);
 
-
-//Route::resource('payment',PaymentController::class);
 Route::apiResource('store',StoreController::class);
 Route::post('store/{id}/change-status', [StoreController::class, 'changeStatus']);
 
